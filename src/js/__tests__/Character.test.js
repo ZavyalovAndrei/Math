@@ -10,19 +10,14 @@ test.each([
   
 });
 
-  test('should return character to string', () => {
-    const result = new Character('Олег', 'Undead');
-    expect(result.toString()).toEqual('Undead Олег (уровень: 1, здоровье: 100, атака: undefined, защита: undefined)');
-  });
+test('should set attack "undefined"', () => {
+  const character = new Character('Вова', 'Bowerman');
+  character.setAttack(5);
+  expect(character.getAttack()).toBeNaN();
+})
 
-  test("shouldn't change characteristics when levelUp", () => {
-    const testCharacter = new Character('Олег', 'Undead');
-    testCharacter.levelUp();
-    expect(testCharacter.toString()).toEqual('Undead Олег (уровень: 1, здоровье: 100, атака: undefined, защита: undefined)');
-  })
-
-  test("shouldn't change characteristics when damage", () => {
-    const testCharacter = new Character('Олег', 'Undead');
-    testCharacter.damage(35);
-    expect(testCharacter.toString()).toEqual('Undead Олег (уровень: 1, здоровье: 100, атака: undefined, защита: undefined)');
-  })
+test('should set stoned "undefined"', () => {
+  const character = new Character('Вова', 'Bowerman');
+  character.setStoned(3);
+  expect(character.getStoned()).toBeNaN();
+})
