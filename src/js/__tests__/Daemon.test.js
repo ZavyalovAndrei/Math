@@ -27,16 +27,15 @@ test.each([
   [10, 1],
 ])("should set attack %i when distance %i", (expected, distance) => {
   const daemon = new Daemon("Саша");
-  daemon.setAttack(distance);
-  expect(daemon.getAttack()).toBe(expected);
+  expect(daemon.getAttack(distance)).toBe(expected);
 });
 
 test.each([
-  [5, 2],
+  [4, 2],
   [0, 5],
   [10, 1],
-])("should set stoned %i when distance %i", (expected, distance) => {
+])("should set attack with stoned %i when distance %i", (expected, distance) => {
   const daemon = new Daemon("Саша");
-  daemon.setStoned(distance);
-  expect(daemon.getStoned()).toBe(expected);
+  daemon.setStoned();
+  expect(daemon.getAttack(distance)).toBe(expected);
 });

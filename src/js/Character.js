@@ -38,29 +38,29 @@ export class Character {
     this.attackDefault = undefined;
     this.defence = undefined;
     this.attack = this.attackDefault;
-    this.stoned = 0;
+    this.stoned = false;
   }
 
-  setAttack(distance) {
-    let result =
+  setAttack(customAttack) {
+    this.attack = customAttack;
+  }
+
+  getAttack(distance) {
+    const stonedCorrection = Math.log2(distance) * 5;
+    let correctedAttack =
       this.attackDefault * (1 - (distance - 1) / DISTANCE_CORRECTION);
-    if (result < 0) {
-      result = 0;
+    if (this.getStoned()) {
+      correctedAttack -= stonedCorrection;
     }
-    this.attack = result;
+    if (correctedAttack < 0) {
+      correctedAttack = 0;
+    }
+    this.setAttack(correctedAttack);
+    return correctedAttack;
   }
 
-  getAttack() {
-    return this.attack;
-  }
-
-  setStoned(distance) {
-    this.getAttack(distance);
-    let result = this.attack - Math.log2(distance) * 5;
-    if (result < 0) {
-      result = 0;
-    }
-    this.stoned = result;
+  setStoned() {
+    this.stoned = true;
   }
 
   getStoned() {

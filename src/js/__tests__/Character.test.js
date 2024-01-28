@@ -12,12 +12,11 @@ test.each([
 
 test('should set attack "undefined"', () => {
   const character = new Character('Вова', 'Bowerman');
-  character.setAttack(5);
-  expect(character.getAttack()).toBeNaN();
+  expect(character.getAttack(5)).toBeNaN();
 })
 
-test('should set stoned "undefined"', () => {
+test('should set atrtack with stoned "undefined"', () => {
   const character = new Character('Вова', 'Bowerman');
-  character.setStoned(3);
-  expect(character.getStoned()).toBeNaN();
+  character.setStoned()
+  expect(character.getAttack(8)).toBeNaN();
 })

@@ -16,16 +16,15 @@ test.each([
   [20, 1],
 ])("should set attack %i when distance %i", (expected, distance) => {
   const magician = new Magician("Лёня");
-  magician.setAttack(distance);
-  expect(magician.getAttack()).toBe(expected);
+  expect(magician.getAttack(distance)).toBe(expected);
 });
 
 test.each([
-  [15, 2],
+  [13, 2],
   [0, 35],
   [20, 1],
 ])("should set stoned %i when distance %i", (expected, distance) => {
   const magician = new Magician("Лёня");
-  magician.setStoned(distance);
-  expect(magician.getStoned()).toBe(expected);
+  magician.setStoned();
+  expect(magician.getAttack(distance)).toBe(expected);
 });
